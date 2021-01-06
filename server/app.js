@@ -1,20 +1,10 @@
-const express = require('express')
+/* const express = require('express')
 const morgan = require('morgan');
 const app = express();
 const port = 4000;
 const { Pool } = require('pg');
 
 require('dotenv').config();
-
-const pool = new Pool({
-  'host': 'localhost',
-  'port': 5432,
-  'user': 'postgres',
-  'password': 'postgres575',
-  'database': 'creahuman',
-  'schemaName': 'koncar' 
-}); 
-
 
 // Za MIddleware login
 app.use(morgan('dev'));
@@ -33,4 +23,30 @@ app.get('/', (req, res) => {
 
 app.listen(port, function(){
   console.log(`pokrenut sever na portu ${port}`);
-})
+}) */
+
+require("dotenv").config();
+
+const express = require("express");
+const app = express();
+
+const path = require("path");
+
+const PORT = process.env.PORT || 3006;
+const server = require("http").Server(app);
+const morgan = require("morgan");
+const cors = require("cors");
+
+const route = require("./src/routes");
+// HTTP logger
+app.use(morgan("dev"));
+
+// Apply middleware
+app.use(cors());
+app.use(express.json());
+// Routes
+route(app);
+
+server.listen(PORT, () =>
+	console.log(`Server Running on port: http://localhost:${PORT}`)
+);
