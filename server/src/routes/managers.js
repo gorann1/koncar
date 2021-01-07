@@ -1,18 +1,18 @@
 const db = require("../db");
 
-function competency(app) {
-  const URL = "/api/v1/competencies";
+function manager(app) {
+  const URL = "/api/v1/managers";
 
-  // Get all Competencies
+  // Get all managers
 	app.get(`${URL}`, async (req, res) => {
 		try {
-			const results = await db.query("SELECT * FROM koncar.competencies");
+			const results = await db.query("SELECT * FROM koncar.managers");
 			console.log("results", results);
 			res.status(200).json({
 				status: "success",
 				length: results.rows.length,
 				data: {
-					competency: results.rows,
+					manager: results.rows,
 				},
 			});
 		} catch (error) {
@@ -20,18 +20,18 @@ function competency(app) {
 		}
   });
 
- 	// Get a Competency
+  	// Get a manager
 	app.get(`${URL}/:id`, async (req, res) => {
 		try {
 			const results = await db.query(
-				"SELECT * FROM koncar.competencies WHERE board_id = $1",
-				[req.params.comp_id]
+				"SELECT * FROM koncar.managers WHERE manager_id = $1",
+				[req.params.id]
 			);
 			res.status(200).json({
 				status: "success",
 				length: results.rows.length,
 				data: {
-					competency: results.rows[0],
+					manager: results.rows[0],
 				},
 			});
 		} catch (error) {
@@ -40,18 +40,18 @@ function competency(app) {
 	});
 
   	
-	// Create a Competency
+	// Create a manager
 	app.post(`${URL}`, async (req, res) => {
 		try {
 			const results = await db.query(
-				"INSERT INTO koncar.boards (first_name, last_name ) VALUES ($1, $2) RETURNING *",
-				[req.body.comp_name ]
+				"INSERT INTO koncar.managers (first_name, last_name ) VALUES ($1, $2) RETURNING *",
+				[req.body.first_name, req.body.last_name, req.body.gen]
 			);
 			res.status(201).json({
 				status: "success",
 				length: results.rows.length,
 				data: {
-					competency: results.rows[0],
+					manager: results.rows[0],
 				},
 			});
 		} catch (error) {
@@ -60,18 +60,18 @@ function competency(app) {
   });
   
 
-  // Update Competency
+  // Update manager
 	app.put(`${URL}/:id`, async (req, res) => {
 		try {
 			const results = await db.query(
-				"UPDATE SET comp_name = $1,WHERE id = $4 RETURNING *",
-				[req.body.comp_name, req.params.id]
+				"UPDATE SET first_name, last_name = $1, gen = $2, WHERE id = $4 RETURNING *",
+				[req.body.first_name, req.body.last_name, req.body.gen, req.params.id]
 			);
 			res.status(200).json({
 				status: "success",
 				length: results.rows.length,
 				data: {
-					competency: results.rows[0],
+					manager: results.rows[0],
 				},
 			});
 		} catch (error) {
@@ -79,12 +79,12 @@ function competency(app) {
 		}
 	});
   
- 	// Delete Competency
+ 	// Delete manager
 	app.delete(`${URL}/:id`, async (req, res) => {
 		try {
 			const results = await db.query(
-				"DELETE FROM koncar.competencies WHERE board_id = $1 RETURNING *",
-				[req.params.comp_id]
+				"DELETE FROM koncar.managers WHERE manager_id = $1 RETURNING *",
+				[req.params.id]
 			);
 			console.log("delete", results);
 		} catch (error) {
@@ -92,5 +92,7 @@ function competency(app) {
 		}
 	});
 
+
+
 }
-  module.exports = competency;
+  module.exports = manager;

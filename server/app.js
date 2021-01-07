@@ -13,6 +13,12 @@ const cors = require("cors");
 const center = require("./src/routes/centers");
 const board = require("./src/routes/boards");
 const competency = require("./src/routes/competencies");
+const department = require("./src/routes/departments");
+const dependent = require("./src/routes/dependents");
+const detcompetency = require("./src/routes/detcompetencies");
+const employee = require("./src/routes/employees");
+const manager = require("./src/routes/managers");
+const position = require("./src/routes/positions");
 
 // HTTP logger
 app.use(morgan("dev"));
@@ -25,6 +31,12 @@ app.use(express.json())
 center(app);
 board(app);
 competency(app);
+department(app);
+dependent(app);
+detcompetency(app);
+employee(app);
+manager(app);
+position(app);
 
 app.get('/', (req, res) => {
   res.send('server / dashboard page');

@@ -1,18 +1,18 @@
 const db = require("../db");
 
-function competency(app) {
-  const URL = "/api/v1/competencies";
+function dependent(app) {
+  const URL = "/api/v1/dependents";
 
-  // Get all Competencies
+  // Get all Dependents
 	app.get(`${URL}`, async (req, res) => {
 		try {
-			const results = await db.query("SELECT * FROM koncar.competencies");
+			const results = await db.query("SELECT * FROM koncar.dependents");
 			console.log("results", results);
 			res.status(200).json({
 				status: "success",
 				length: results.rows.length,
 				data: {
-					competency: results.rows,
+					dependent: results.rows,
 				},
 			});
 		} catch (error) {
@@ -20,38 +20,38 @@ function competency(app) {
 		}
   });
 
- 	// Get a Competency
+  	// Get a Dependentg
 	app.get(`${URL}/:id`, async (req, res) => {
 		try {
 			const results = await db.query(
-				"SELECT * FROM koncar.competencies WHERE board_id = $1",
-				[req.params.comp_id]
+				"SELECT * FROM koncar.dependents WHERE dependent_id = $1",
+				[req.params.id]
 			);
 			res.status(200).json({
 				status: "success",
 				length: results.rows.length,
 				data: {
-					competency: results.rows[0],
+					dependent: results.rows[0],
 				},
 			});
 		} catch (error) {
 			console.log("error", error);
-		}
+		  }
 	});
 
   	
-	// Create a Competency
+	// Create a Dependent
 	app.post(`${URL}`, async (req, res) => {
 		try {
 			const results = await db.query(
-				"INSERT INTO koncar.boards (first_name, last_name ) VALUES ($1, $2) RETURNING *",
-				[req.body.comp_name ]
+				"INSERT INTO koncar.dependents (dependent_name, department_id) VALUES ($1, $2) RETURNING *",
+				[req.body.dependent_name, req.body.department_id]
 			);
 			res.status(201).json({
 				status: "success",
 				length: results.rows.length,
 				data: {
-					competency: results.rows[0],
+					dependent: results.rows[0],
 				},
 			});
 		} catch (error) {
@@ -60,18 +60,18 @@ function competency(app) {
   });
   
 
-  // Update Competency
+  // Update Dependent
 	app.put(`${URL}/:id`, async (req, res) => {
 		try {
 			const results = await db.query(
-				"UPDATE SET comp_name = $1,WHERE id = $4 RETURNING *",
-				[req.body.comp_name, req.params.id]
+				"UPDATE SET dependent_name, department_id = $1, code = $2, WHERE id = $4 RETURNING *",
+				[req.body.dependent_name, req.body.department_id, req.params.id]
 			);
 			res.status(200).json({
 				status: "success",
 				length: results.rows.length,
 				data: {
-					competency: results.rows[0],
+					dependent: results.rows[0],
 				},
 			});
 		} catch (error) {
@@ -79,12 +79,12 @@ function competency(app) {
 		}
 	});
   
- 	// Delete Competency
+ 	// Delete Dependent
 	app.delete(`${URL}/:id`, async (req, res) => {
 		try {
 			const results = await db.query(
-				"DELETE FROM koncar.competencies WHERE board_id = $1 RETURNING *",
-				[req.params.comp_id]
+				"DELETE FROM koncar.dependents WHERE dependent_id = $1 RETURNING *",
+				[req.params.id]
 			);
 			console.log("delete", results);
 		} catch (error) {
@@ -92,5 +92,7 @@ function competency(app) {
 		}
 	});
 
+
+
 }
-  module.exports = competency;
+  module.exports = dependent;
