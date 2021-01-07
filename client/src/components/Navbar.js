@@ -1,5 +1,6 @@
 import React from 'react'
 import { AiOutlineBars } from 'react-icons/ai';
+import Drop from './Drop';
 
 class Navbar extends React.Component {
 
@@ -16,7 +17,7 @@ class Navbar extends React.Component {
           <div className="hidden md:flex flex-col md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
             <a href="{'/info}" className="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">Doma</a>
             <a href="{'/info}" className="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Struktura</a>
-            <a href="{'/info}" className="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Modeliranjee</a>
+            <Drop />
             <a href="{'/info}" className="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Korisnici</a>
             <a href="{'/info}" className="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Dokumentacija</a>
             <a href="{'/info}" className="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Kontakt</a>
