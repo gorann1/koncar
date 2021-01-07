@@ -1,41 +1,43 @@
-import React from 'react';
-
+import React from 'react'
+import { AiOutlineBars } from 'react-icons/ai';
 
 class Navbar extends React.Component {
 
-  render() {
+   render() {
     return (
-    <nav className="bg-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <div class="flex-shrink-0">
-              <h3 className="text-4x1 text-white">KONCAR HR</h3>
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="_inform"> CRUD</a>
-                <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="_inform"> Zaposlenici</a>
-                <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="_inform"> Radna mjesta</a>
-                <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="_inform"> Kompetencije</a>
-                <a className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" href="_inform"> Izvješća</a>
-              </div>
-            </div>
-          </div>
-          <div className="hidden md:block">
-            <div className="ml-4 flex items-center md:ml-6">
-             <button class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-              <span class="sr-only">View notifications</span>
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-              </svg>
+      <nav className="bg-white py-2 md:py-4">
+        <div className="container px-4 mx-auto md:flex md:items-center">
+          <div className="flex justify-between items-center">
+            <a href="{'/home'}" className="font-bold text-xl text-indigo-600">KONČAR HR</a>
+            <button className="border border-solid border-gray-600 px-3 py-1 rounded text-gray-600 opacity-50 hover:opacity-75 md:hidden" id="navbar-toggle">
+              <AiOutlineBars />
             </button>
-            </div>
+          </div>
+          <div className="hidden md:flex flex-col md:flex-row md:ml-auto mt-3 md:mt-0" id="navbar-collapse">
+            <a href="{'/info}" className="p-2 lg:px-4 md:mx-2 text-white rounded bg-indigo-600">Info</a>
+            <a href="{'/info}" className="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Pregled</a>
+            <a href="{'/info}" className="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Struktura</a>
+            <a href="{'/info}" className="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Upravljanje</a>
+            <a href="{'/info}" className="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Korisnici</a>
+            <a href="{'/info}" className="p-2 lg:px-4 md:mx-2 text-gray-600 rounded hover:bg-gray-200 hover:text-gray-700 transition-colors duration-300">Dokumentacija</a>
+            <a href="{'/info}" class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-transparent rounded hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-300">Login</a>
+            <a href="{'info}" class="p-2 lg:px-4 md:mx-2 text-indigo-600 text-center border border-solid border-indigo-600 rounded hover:bg-indigo-600 hover:text-white transition-colors duration-300 mt-1 md:mt-0 md:ml-1">Signup</a>
+             <a href="{'info}" class="p-2 lg:px-4 md:mx-2 text-green-light text-center border border-transparent rounded hover:bg-green-light hover:text-green transition-colors duration-300">Admin</a>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>      
+
     )
   }
 }
+
 export default Navbar
+
+/* let toggleBtn = document.querySelector("#navbar-toggle");
+let collapse = document.querySelector("#navbar-collapse");
+
+toggleBtn.onclick = () => {
+  collapse.classList.toggle("hidden");
+  collapse.classList.toggle("flex");
+};
+ */
