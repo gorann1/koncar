@@ -1,21 +1,23 @@
 import './tailwind.output.css';
-import Navbar from './components/Navbar.js';
-
-const classes = {
-  wrapper: 'w-24 md:w-auto border-2 m-16 p-16 mt-60',
-  title: 'text-gray-800 text-xl text-center font-bold',
-};
-
-
+//import Navbar from './components/Navbar.js';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Home from './routes/Home';
+import UpdateEmployeesPage from './routes/UpdateEmployees';
+import PositionDetails from './routes/PositionDetails';
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <div className={classes.wrapper}>
-        <h1 className={classes.title}>Basic Component</h1>
-    </div>
-    </div>
-  );
-}
+  <Router>
+    <Switch>
+    <Route exact path="/" component={Home} />  
+    <Route exact path="/employees/:id/update" component={UpdateEmployeesPage} />    
+    <Route exact path="/positions/:id" component={PositionDetails} />  
+    <Route 
+    exact path="/" 
+    component={Home} 
+    />
+    </Switch>  
+  </Router>
+  )
+};
 
 export default App;

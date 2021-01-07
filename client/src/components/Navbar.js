@@ -9,7 +9,7 @@ class Navbar extends React.Component {
       <nav className="bg-white py-2 md:py-4">
         <div className="container px-4 mx-auto md:flex md:items-center">
           <div className="flex justify-between items-center">
-            <a href="{'/home'}" className="font-bold text-xl text-indigo-600">KONČAR HR</a>
+            <a href="{'/home'}" className="font-bold text-xl text-indigo-600">CB</a>
             <button className="border border-solid border-gray-600 px-3 py-1 rounded text-gray-600 opacity-50 hover:opacity-75 md:hidden" id="navbar-toggle">
               <AiOutlineBars />
             </button>
