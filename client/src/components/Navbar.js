@@ -15,11 +15,10 @@ class Navbar extends React.Component {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
                 <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="_inform"> CRUD</a>
-                <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="_inform"> Employees</a>
-                <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="_inform"> Position</a>
-                <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="_inform"> Technical</a>
-                <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="_inform"> Behavior</a>
-                <a className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" href="_inform"> Reports</a>
+                <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="_inform"> Zaposlenici</a>
+                <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="_inform"> Radna mjesta</a>
+                <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="_inform"> Kompetencije</a>
+                <a className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" href="_inform"> Izvješća</a>
               </div>
             </div>
           </div>
