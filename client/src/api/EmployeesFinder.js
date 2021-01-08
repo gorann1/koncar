@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 //const baseURL = 'http://localhost:3006/api/v1/employees/';
 
@@ -6,11 +6,15 @@ import axios from 'axios'
 // NODE_ENV = production environment
 
 // if we are production we on /api/v1/employees
-
+/* 
 const baseURL = process.env.NODE_ENV === 'production' 
 ? '/api/v1/employees'
 : 'http://localhost/api/v1/employees';
 
 export default axios.create ({
   baseURL.
+}) */
+
+export default axios.create({
+  baseURL: "http://localhost:3005/api/v1/employees",
 });

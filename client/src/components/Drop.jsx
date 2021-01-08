@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import {Route, Router, Switch } from 'react-router-dom';
+import FetchCenters from '../components/FetchCenters';
 
 class Drop extends React.Component {
   render() {

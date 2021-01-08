@@ -1,24 +1,74 @@
-import React from 'react'
+import React, { useState, useContext } from "react";
+import EmployeesFinder from "../api/EmployeesFinder";
+import { CompetencyContext } from "../context/CompetencyContext";
 
-class AddEmpCompetency extends React.Component {
-  render() {
-    return (
-      <div className="rola">
-        <label className="block">
-          <span className="text-gray-700">Input</span>
-          {/* Prikaz svih zaposlenika na listi  */}
-          <input type="email" class="form-input mt-1 block w-full" placeholder="Upisi radnika" />
-        </label>
-        <label className="block">
-          <span className="text-gray-700">Select</span>
-          <select className="form-select block w-full mt-1">
-            <option>Option 1</option>
-            <option>Option 2</option>
-          </select>
-        </label>
-      </div>
-    )
-  }
-}
+const AddCompetency = () => {
+  const { addCompetency } = useContext(CompetencyContext);
+  const [name, setName] = useState("");
+  const [location, setLocation] = useState("");
+  const [priceRange, setPriceRange] = useState("Price Range");
 
-export default AddEmpCompetency
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await EmployeesFinder.post("/", {
+        name,
+        location,
+        price_range: priceRange,
+      });
+      console.log(response.data.data);
+      addCompetency(response.data.data.competency);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  return (
+    <div className="mb-4">
+      <form action="">
+        <div className="form-row">
+          <div className="col">
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              type="text"
+              className="form-control"
+              placeholder="name"
+            />
+          </div>
+          <div className="col">
+            <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="location"
+            />
+          </div>
+          <div className="col">
+            <select
+              value={priceRange}
+              onChange={(e) => setPriceRange(e.target.value)}
+              className="custom-select my-1 mr-sm-2"
+            >
+              <option disabled>Price Range</option>
+              <option value="1">$</option>
+              <option value="2">$$</option>
+              <option value="3">$$$</option>
+              <option value="4">$$$$</option>
+              <option value="5">$$$$$</option>
+            </select>
+          </div>
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            className="btn btn-primary"
+          >
+            Add
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default AddCompetency;

@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import FetchCenters from '/components/FetchCenters';
 
 const UpdateCompetencies = () => {
   return (
     <div>
-     Kompetencije CRUD 
+      <FetchCenters />
     </div>
   )
 }
